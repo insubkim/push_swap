@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 10:20:54 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/06 15:15:30 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h> 
 # include <limits.h> 
 
-char	**ft_split(char *s, char c);
 
 typedef struct s_list
 {
@@ -51,6 +50,12 @@ t_list *pop(t_deque *deque);
 void    push(t_deque *deque, t_list *node);
 int peek(t_deque *deque);
 int peek_bottom(t_deque *deque);
+void    check_dup(int *args, int size);
+char **parse_arg(int argc, char **argv);
+int *ft_atoi_s(char **arr, int *size);
+int ft_strlen(char *s);
+void    free_arr(char ***arr);
+char	**ft_split(char *s, char *c);
 
 //-----------------지우셈..
 #include <stdio.h>

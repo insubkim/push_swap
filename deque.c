@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 10:24:25 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/06 15:30:42 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ t_deque *make_deque_a(int   *args, int size)
     a -> top = 0;
     a -> bottom = 0;
     while (size-- > 0)
-        add_front_deque(a, *args++);
+        add_front_deque(a, args[size]);
     return (a);
 }

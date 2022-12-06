@@ -60,11 +60,26 @@ void    move_stack_three(t_deque *a, t_deque *b, int order)
     third = a -> top -> next -> next -> val;
     if (order == 1)
     {
-
+        if (first < second && first < third)
+            //pa $(2!)
+        if (first > second && first > third)
+            //ra $(2!) rra pa
+        if (first  > second && first < third && second < third)
+            //sa pa pa pa
+        if (first  > second && first < third && second > third)
+            //rra pa pa pa
+            
     }
     else
     {
-
+        if (first > second && first > third)
+            //pa $(2!)
+        if (first < second && first < third)
+            //ra $(2!) rra pa
+        if (first  > second && first < third && second < third)
+            //sa pa pa pa
+        if (first  > second && first < third && second > third)
+            //rra pa pa pa
     }
 }
 
