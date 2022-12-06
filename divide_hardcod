@@ -1,0 +1,39 @@
+1   pa
+2   pa pa , sa pa
+3   pa paa paa 
+abc
+    pa pa pa sb
+acb
+    sa pa pa pa
+bac
+    pa sa pa sb pa 
+bca
+    pa pa sb pa sb
+cab
+    pa sa pa sb pa
+cba
+4
+4! 24
+    a 3
+pa %(3!)
+    
+    1 a 2
+ss활용
+    2 a 1
+
+    a 3
+%(3!) pa
+
+5
+    a 4
+pa %(4!)
+
+    1 a 3
+
+    2 a 2
+
+    3 a 1
+
+    4 a 
+%(4!) pa
+5! 120

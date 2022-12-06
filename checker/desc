@@ -1,0 +1,76 @@
+
+
+
+
+checker 프로그램
+
+-스택을 인자로 받는다.
+Write a program named checker that takes as an argument the stack a formatted
+as a list of integers. The first argument should be at the top of the stack (be careful
+about the order). If no argument is given, it stops and displays nothing.
+
+-표준입력으로 명령 받고, 스택에서 명령 실행
+• It will then wait and read instructions on the standard input, each instruction will
+be followed by ’\n’. Once all the instructions have been read, the program has to
+execute them on the stack received as an argument.
+
+-맞으면 ok 표시
+• If after executing those instructions, the stack a is actually sorted and the stack b
+is empty, then the program must display "OK" followed by a ’\n’ on the standard
+output.
+
+-틀리면 ko 표시
+• In every other case, it must display "KO" followed by a ’\n’ on the standard output.
+
+-에러 처리
+
+• In case of error, you must display "Error" followed by a ’\n’ on the standard error. 
+Errors include for example: some arguments are not integers, 
+some arguments are bigger than an integer, there are duplicates, 
+an instruction doesn’t exist and/or is incorrectly formatted.
+
+#########################################################################################
+
+-실행해야되는 명령
+    스왑, 푸시, 로테이트, 역로테이트, 동시스왑, 동시 로테이트, 동시 역로테이트
+sa (swap a): Swap the first 2 elements at the top of stack a.
+    Do nothing if there is only one or no elements.
+sb (swap b): Swap the first 2 elements at the top of stack b.
+    Do nothing if there is only one or no elements.
+ss : sa and sb at the same time.
+pa (push a): Take the first element at the top of b and put it at the top of a.
+    Do nothing if b is empty.
+pb (push b): Take the first element at the top of a and put it at the top of b.
+    Do nothing if a is empty.
+ra (rotate a): Shift up all elements of stack a by 1.
+    The first element becomes the last one.
+rb (rotate b): Shift up all elements of stack b by 1.
+    The first element becomes the last one.
+rr : ra and rb at the same time.
+rra (reverse rotate a): Shift down all elements of stack a by 1.
+    The last element becomes the first one.
+rrb (reverse rotate b): Shift down all elements of stack b by 1.
+    The last element becomes the first one.
+rrr : rra and rrb at the same time
+#########################################################################################
+프로그램 실행 순서
+
+-인자 체크
+-표준입력 체크
+-인자 덱 front에 add
+-명령 실행
+-스택 b 체크
+-스택 a 정렬 체크
+-결과 출력
+#########################################################################################
+구현 요소
+
+-링크드 리스트 dequeue 구현
+    삽입, 삭제가 빈번 -> 링크드 리스트 사용
+    앞, 뒤로 데이터가 추가, 삭제됨 -> 덱 사용
+
+-실행 명령 구현
+-인자 체크 구현
+-표준입력 체크 구현
+-결과 출력 구현
+#########################################################################################
