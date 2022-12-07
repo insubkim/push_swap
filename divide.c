@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:49 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 16:52:19 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 22:24:24 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    set_temp_arr(t_deque *a, int order, int *arr, int len)
 
     i = 0;
     node = a -> top;
-    if (order == 1)
+    if (order == -1)
     {
         while (i < len)
         {
@@ -80,18 +80,17 @@ void    set_temp_arr(t_deque *a, int order, int *arr, int len)
 void    move_stack_three(t_deque *a, t_deque *b, int order)
 {
     int arr[3];
-    
-    order =  order * -1;
+
     set_temp_arr(a, order, arr, 3);
     if (arr[0] < arr[1] && arr[0] < arr[2])
     {
         pa(a, b);
-        move_stack_two(a, b, order * -1);
+        move_stack_two(a, b, order);
     }
     if (arr[0] > arr[1] && arr[1] < arr[2])
     {
         sa(a);
-        move_stack_two(a, b, order * -1);
+        move_stack_two(a, b, order);
     }    
     if (arr[0] > arr[2] && arr[1] > arr[2])
     {

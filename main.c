@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 17:35:44 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 22:37:41 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ int main(int argc, char **argv)
     // int i  = 0;
     // while (size > i)
     //     printf("%d\n", args[i++]);
-    args = malloc(sizeof(int) * 45);
+    size = 500;
+    args = malloc(sizeof(int) * size);
     int i = 0;
-    while (i < 45)
+    while (i < size)
     {
-        args[i] = i + 1;
+        args[i] = size -i;
         i++;
     }
-    size = 45;
+    
     
     a = make_deque_a(args, size);
     b = make_deque_b();

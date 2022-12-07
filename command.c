@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 16:32:12 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 22:03:33 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void    pa_center(t_deque *a, t_deque *b, int i)
 {
     int j;
 
-    j = 0;
+    j = 1;
     while (j++ < i)
         ra(a);
     pa(a, b);
-    while (j-- > 0)
+    while (--j > 1)
         rra(a);
 }

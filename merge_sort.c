@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merge_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 15:50:21 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 22:38:47 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void    merge_sort(t_deque *a, t_deque *b)
     divide(a, b, model);
     //conquer
     //apply stack b|a into model's next node
-    // model -> prev;
-    // while (model -> prev)
-    // {
-    //     conquer(a, b, model);
-    //     model = model -> prev;
-    // }    
+     model -> prev;
+     while (model -> prev)
+     {
+         conquer(a, b, model);
+         model = model -> prev;
+     }    
 }
