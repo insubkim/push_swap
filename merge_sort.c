@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 15:34:56 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:50:21 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void    merge_sort(t_deque *a, t_deque *b)
     divide(a, b, model);
     //conquer
     //apply stack b|a into model's next node
-    model -> prev;
-    while (model -> prev)
-    {
-        conquer(a, b, model);
-        model = model -> prev;
-    }    
+    // model -> prev;
+    // while (model -> prev)
+    // {
+    //     conquer(a, b, model);
+    //     model = model -> prev;
+    // }    
 }

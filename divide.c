@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:49 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 13:04:08 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:50:00 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,46 @@ void    move_stack_three(t_deque *a, t_deque *b, int order)
         pa(a, b);
 }
 
+
+
 void    move_stack_four(t_deque *a, t_deque *b, int order)
 {
     int arr[4];
     
     set_temp_arr(a, order, arr, 4);
     if (arr[0] < arr[1] && arr[0] < arr[1] && arr[0] < arr[2] && arr[0] < arr[3])
-        pa move_stack_three(a, b, order);
+        pa(a, b);
     else if (arr[0] < arr[1] && arr[1] < arr[2] && arr[1] < arr[3])
-        sa ra move_stack_three(a, b, order); rra pa
+    {
+        sa(a);
+        pa(a, b);
+    } 
     else if (arr[0] < arr[2] && arr[1] < arr[2] && arr[2] < arr[3])
-        
+        pa_center(a, b, 3); 
     else
-        move_stack_three(a, b, order); pa
-       
+        pa_center(a, b, 4);        
+    move_stack_three(a, b, order); 
+}
+
+void    move_stack_five(t_deque *a, t_deque *b, int order)
+{
+    int arr[5];
+
+    set_temp_arr(a, order, arr, 5);
+    if (arr[0] < arr[1] && arr[0] < arr[2] && arr[0] < arr[3] && arr[0] < arr[4])
+        pa(a, b);
+    else if (arr[0] < arr[1] && arr[1] < arr[2] && arr[1] < arr[3] && arr[1] < arr[4])
+    {
+        sa(a);
+        pa(a, b);
+    } 
+    else if (arr[0] < arr[2] && arr[1] < arr[2] && arr[2] < arr[3] && arr[2] < arr[4])
+        pa_center(a, b, 3); 
+    else if (arr[0] < arr[3] && arr[1] < arr[3] && arr[2] < arr[3] && arr[3] < arr[4])
+        pa_center(a, b, 4); 
+    else
+        pa_center(a, b, 5);        
+    move_stack_four(a, b, order); 
 }
 
 void    a_to_b(t_deque *a, t_deque *b, int div_size, int order)

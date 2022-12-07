@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 15:30:42 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:46:06 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ t_list *pop(t_deque *deque)
     return (node);
 }
 
+t_list *pop_bottom(t_deque *deque)
+{
+    t_list *node;
+
+    if (!deque || !(deque -> top))
+        print_error();
+    node = deque -> top;
+    if (deque -> top -> next)
+        deque -> top =  deque -> top -> next;
+    (deque -> size)--;
+    return (node);
+}
+
+
 void    push(t_deque *deque, t_list *node)
 {
     if (!deque || !node)
@@ -32,11 +46,27 @@ void    push(t_deque *deque, t_list *node)
     node -> next = deque -> top;
     if (deque -> top)
         deque -> top -> back = node;
+    node -> back = 0;
     deque -> top = node;
     if (deque -> bottom == 0)
         deque -> bottom = node;
     (deque -> size)++;
 }
+
+void    push_bottom(t_deque *deque, t_list *node)
+{
+    if (!deque || !node)
+        print_error();
+    node -> next = 0;
+    if (deque -> bottom)
+        deque -> bottom -> next = node;
+    node -> back = deque -> bottom;
+    deque -> bottom = node;
+    if (deque -> top == 0)
+        deque -> bottom = node;
+    (deque -> size)++;
+}
+
 
 int peek(t_deque *deque)
 {

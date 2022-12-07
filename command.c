@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 13:33:41 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:46:10 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,26 @@ void    sa(t_deque *a)
         print_error();
     push(a, first);
     push(a, second);
+}
+
+void    ra(t_deque *a)
+{
+    push_bottom(a, pop(a));
+}
+
+void    rra(t_deque *a)
+{
+    push(a, pop_bottom(a));
+}
+
+void    pa_center(t_deque *a, t_deque *b, int i)
+{
+    int j;
+
+    j = 0;
+    while (j++ < i)
+        ra(a);
+    pa(a, b);
+    while (j-- > 0)
+        rra(a);
 }
