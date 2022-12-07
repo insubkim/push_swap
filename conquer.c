@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 23:15:10 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/08 08:37:23 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void    match_model(t_deque *from, t_deque *to, t_model *match, int i)
     int val;
     int flag;
 
+    while (match -> div_arr[i - 1] || match -> div_arr[i] || match -> div_arr[match -> div_count - i / 2 - 1])
+{
     if (match -> div_arr[i - 1])
     {
         flag = 0;
@@ -47,7 +49,7 @@ void    match_model(t_deque *from, t_deque *to, t_model *match, int i)
             }
         }
     }
-    if (match -> div_arr[match -> div_count - i / 2])
+    if (match -> div_arr[match -> div_count - i / 2 - 1])
     {
         if (match -> div_arr_order[i] * -1 == 1)
         {
@@ -69,19 +71,20 @@ void    match_model(t_deque *from, t_deque *to, t_model *match, int i)
     if (flag == 0)
     {
         (match ->div_arr[i - 1])--;
-        // ra 
+        rotate(to);
     }
     else if (flag == 1)
     {
         (match ->div_arr[i])--;
-        // pb
+        pop_push(from, to);
     }
     else if (flag == 2)
     {
-        (match ->div_arr[match -> div_count - i / 2])--;
-        // rrb pb
+        (match ->div_arr[match -> div_count - i / 2 - 1])--;
+        r_rotate(from);
+        pop_push(from, to);
     }
-
+}
 }
 
 void    conquer(t_deque *a, t_deque *b, t_model *model)
@@ -107,13 +110,13 @@ void    conquer(t_deque *a, t_deque *b, t_model *model)
     {
         if (flag)
         {
-            pop_chunk(a, b, (match -> div_arr)[i++]);
-            match_model(a, b, match, i++);
+            pop_chunk(b, a, (model -> div_arr)[i++]);
+            match_model(b, a, model, i++);
         }
         else
         {
-            pop_chunk(b, a, (match -> div_arr)[i++]);
-            match_model(b, a, match, i++);
+            pop_chunk(a, b, (model -> div_arr)[i++]);
+            match_model(a, b, model, i++);
         }
         j = j + 3;
     }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 16:31:30 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/08 08:16:51 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 
 typedef struct  s_deque
 {
+    char    *name;
     int size;
     struct  s_list  *top;
     struct  s_list  *bottom;
@@ -58,15 +59,15 @@ void    free_arr(char ***arr);
 char	**ft_split(char *s, char *c);
 t_model *get_last_node(t_model *model);
 void    divide(t_deque *a, t_deque *b, t_model *model);
-void    pa(t_deque *a, t_deque *b);
-void    sa(t_deque *a);
-void    sb(t_deque *b);
-void    ra(t_deque *a);
-void    rra(t_deque *a);
+void    pop_push(t_deque *a, t_deque *b);
+void    swap(t_deque *a);
+void    rotate(t_deque *a);
+void    r_rotate(t_deque *a);
 void    pa_center(t_deque *a, t_deque *b, int i);
 int peek_bottom(t_deque *deque);
 void    push_bottom(t_deque *deque, t_list *node);
 t_list *pop_bottom(t_deque *deque);
+void    conquer(t_deque *a, t_deque *b, t_model *model);
 
 //-----------------지우셈..
 #include <stdio.h>

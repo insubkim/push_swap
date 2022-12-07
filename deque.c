@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deque.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 17:16:29 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/08 08:10:04 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ t_deque *make_deque_b(void)
 
     b = (t_deque *)malloc(sizeof(t_deque));
     if (!b)
-        print_error();
+        print_error();\
+    b -> name ="b";
     b -> size = 0;
     b -> top = 0;
     b -> bottom = 0;
@@ -128,6 +129,7 @@ t_deque *make_deque_a(int   *args, int size)
     a = (t_deque *)malloc(sizeof(t_deque));
     if (!a)
         print_error();
+    a -> name = "a";
     a -> size = 0;
     a -> top = 0;
     a -> bottom = 0;

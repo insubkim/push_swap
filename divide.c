@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:49 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 22:24:24 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/08 08:13:49 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void    move_stack_two(t_deque *a, t_deque *b, int order)
     first = peek(a);
     second = a -> top -> next -> val;
     if ((order == 1 && first < second) || (order == -1 && first > second))
-        sa(a);
-    pa(a, b);
-    pa(a, b);
+        swap(a);
+    pop_push(a, b);
+    pop_push(a, b);
 }
 
 void    set_temp_arr(t_deque *a, int order, int *arr, int len)
@@ -84,23 +84,23 @@ void    move_stack_three(t_deque *a, t_deque *b, int order)
     set_temp_arr(a, order, arr, 3);
     if (arr[0] < arr[1] && arr[0] < arr[2])
     {
-        pa(a, b);
+        pop_push(a, b);
         move_stack_two(a, b, order);
     }
     if (arr[0] > arr[1] && arr[1] < arr[2])
     {
-        sa(a);
+        swap(a);
         move_stack_two(a, b, order);
     }    
     if (arr[0] > arr[2] && arr[1] > arr[2])
     {
-        pa(a, b);
-        sa(a);
-        pa(a, b);
-        sb(b);
-        pa(a, b);
+        pop_push(a, b);
+        swap(a);
+        pop_push(a, b);
+        swap(b);
+        pop_push(a, b);
         if (arr[0] > arr[2])
-            sb(b);
+            swap(b);
     }
 }
 
@@ -110,11 +110,11 @@ void    move_stack_four(t_deque *a, t_deque *b, int order)
     
     set_temp_arr(a, order, arr, 4);
     if (arr[0] < arr[1] && arr[0] < arr[1] && arr[0] < arr[2] && arr[0] < arr[3])
-        pa(a, b);
+        pop_push(a, b);
     else if (arr[0] < arr[1] && arr[1] < arr[2] && arr[1] < arr[3])
     {
-        sa(a);
-        pa(a, b);
+        swap(a);
+        pop_push(a, b);
     } 
     else if (arr[0] < arr[2] && arr[1] < arr[2] && arr[2] < arr[3])
         pa_center(a, b, 3); 
@@ -129,11 +129,11 @@ void    move_stack_five(t_deque *a, t_deque *b, int order)
 
     set_temp_arr(a, order, arr, 5);
     if (arr[0] < arr[1] && arr[0] < arr[2] && arr[0] < arr[3] && arr[0] < arr[4])
-        pa(a, b);
+        pop_push(a, b);
     else if (arr[0] < arr[1] && arr[1] < arr[2] && arr[1] < arr[3] && arr[1] < arr[4])
     {
-        sa(a);
-        pa(a, b);
+        swap(a);
+        pop_push(a, b);
     } 
     else if (arr[0] < arr[2] && arr[1] < arr[2] && arr[2] < arr[3] && arr[2] < arr[4])
         pa_center(a, b, 3); 
@@ -147,7 +147,7 @@ void    move_stack_five(t_deque *a, t_deque *b, int order)
 void    a_to_b(t_deque *a, t_deque *b, int div_size, int order)
 {
     if (div_size == 1)
-        pa(a, b);
+        pop_push(a, b);
     else if (div_size == 2)
         move_stack_two(a, b, order);
     else if (div_size == 3)

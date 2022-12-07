@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 22:37:41 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/08 08:17:57 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int main(int argc, char **argv)
     // int i  = 0;
     // while (size > i)
     //     printf("%d\n", args[i++]);
-    size = 500;
+    size = 6;
     args = malloc(sizeof(int) * size);
     int i = 0;
     while (i < size)
     {
-        args[i] = size -i;
+        args[i] = i + 1;
         i++;
     }
     
