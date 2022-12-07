@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:49 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 11:26:11 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 13:04:08 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    pa(t_deque *a, t_deque *b)
-{
-    t_list  *node;
-
-    node = pop(a);
-    if (!node)
-        print_error();
-    push(b, node);
-    write(1, "pa\n", 3);
-}
-
-void    sa(t_deque *a)
-{
-    t_list  *first;
-    t_list  *second;
-
-    first = pop(a);
-    second = pop(a);
-    if (!first || !second)
-        print_error();
-    push(a, first);
-    push(a, second);
-}
 
 void    move_stack_two(t_deque *a, t_deque *b, int order)
 {
@@ -49,38 +25,72 @@ void    move_stack_two(t_deque *a, t_deque *b, int order)
     pa(a, b);
 }
 
-void    move_stack_three(t_deque *a, t_deque *b, int order)
+void    set_temp_arr(t_deque *a, int order, int *arr, int len)
 {
-    int first;
-    int second;
-    int third;
-    
-    first = peek(a);
-    second = a -> top -> next -> val;
-    third = a -> top -> next -> next -> val;
+    int     i;
+    t_list  *node;
+
+    i = 0;
+    node = a -> top;
     if (order == 1)
     {
-        if (first < second && first < third)
-            //pa $(2!)
-        if (first > second && first > third)
-            //ra $(2!) rra pa
-        if (first  > second && first < third && second < third)
-            //sa pa pa pa
-        if (first  > second && first < third && second > third)
-            //rra pa pa pa
-            
+        while (i < len)
+        {
+            arr[i++] = node;
+            node = node -> next;
+        }
     }
     else
     {
-        if (first > second && first > third)
-            //pa $(2!)
-        if (first < second && first < third)
-            //ra $(2!) rra pa
-        if (first  > second && first < third && second < third)
-            //sa pa pa pa
-        if (first  > second && first < third && second > third)
-            //rra pa pa pa
+        while (0 <= --len)
+        {
+            arr[len] = node;
+            node = node -> next;    
+        }   
     }
+}
+
+void    move_stack_three(t_deque *a, t_deque *b, int order)
+{
+    int arr[3];
+    
+    set_temp_arr(a, order, arr, 3);
+    if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
+    {
+        pa(a);
+        sa(a);
+    }
+    else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2])
+        sa(a); 
+    else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
+        rra(a); 
+    else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
+        ra(a); 
+    else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
+    {
+        sa(a);
+        rra(a);
+    }     
+    pa(a, b);
+    pa(a, b);
+    if (!(arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2]))
+        pa(a, b);
+}
+
+void    move_stack_four(t_deque *a, t_deque *b, int order)
+{
+    int arr[4];
+    
+    set_temp_arr(a, order, arr, 4);
+    if (arr[0] < arr[1] && arr[0] < arr[1] && arr[0] < arr[2] && arr[0] < arr[3])
+        pa move_stack_three(a, b, order);
+    else if (arr[0] < arr[1] && arr[1] < arr[2] && arr[1] < arr[3])
+        sa ra move_stack_three(a, b, order); rra pa
+    else if (arr[0] < arr[2] && arr[1] < arr[2] && arr[2] < arr[3])
+        
+    else
+        move_stack_three(a, b, order); pa
+       
 }
 
 void    a_to_b(t_deque *a, t_deque *b, int div_size, int order)
@@ -93,6 +103,8 @@ void    a_to_b(t_deque *a, t_deque *b, int div_size, int order)
         move_stack_three(a, b, order);
     else if (div_size ==4)
         move_stack_four(a, b, order);
+    else if (div_size == 5)
+        move_stack_five(a, b, order);
     else
         print_error();
 }

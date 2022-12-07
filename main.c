@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/06 15:26:06 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 12:02:46 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,16 @@ int main(int argc, char **argv)
     a = make_deque_a(args, size);
     b = make_deque_b();
     
-    while (a->top)
-    {
-        printf("%d\n", a->top->val);
-        a->top = a->top->next;
-    }
-    while (b->top)
-    {
-        printf("%d\n", b->top->val);
-        b->top = b->top->next;
-    }
-    
-    // push_swap(a,b);
+    // while (a->top)
+    // {
+    //     printf("%d\n", a->top->val);
+    //     a->top = a->top->next;
+    // }
+    // while (b->top)
+    // {
+    //     printf("%d\n", b->top->val);
+    //     b->top = b->top->next;
+    // }
+    push_swap(a,b);
     return (0);
 }
