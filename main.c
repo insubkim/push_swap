@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 12:02:46 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 17:35:44 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ int main(int argc, char **argv)
     t_deque *a;
     t_deque *b;
 
-    args = ft_atoi_s(parse_arg(--argc, ++argv), &size);
-    check_dup(args, size);
+    // args = ft_atoi_s(parse_arg(--argc, ++argv), &size);
+    // check_dup(args, size);
 
-    int i  = 0;
-    while (size > i)
-        printf("%d\n", args[i++]);
-    // args = malloc(sizeof(int) * 100);
-    // int i = 0;
-    // while (++i <=100)
-    //     args[i] = i;
-    // size = 100;
+    // int i  = 0;
+    // while (size > i)
+    //     printf("%d\n", args[i++]);
+    args = malloc(sizeof(int) * 45);
+    int i = 0;
+    while (i < 45)
+    {
+        args[i] = i + 1;
+        i++;
+    }
+    size = 45;
     
     a = make_deque_a(args, size);
     b = make_deque_b();
@@ -45,5 +48,10 @@ int main(int argc, char **argv)
     //     b->top = b->top->next;
     // }
     push_swap(a,b);
+     while (b->top)
+     {
+         printf("%d\n", b->top->val);
+         b->top = b->top->next;
+     }
     return (0);
 }

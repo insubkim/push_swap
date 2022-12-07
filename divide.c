@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:49 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 15:50:00 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 16:52:19 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    move_stack_two(t_deque *a, t_deque *b, int order)
     
     first = peek(a);
     second = a -> top -> next -> val;
-    if ((order == 1 && first > second) || (order == -1 && first < second))
+    if ((order == 1 && first < second) || (order == -1 && first > second))
         sa(a);
     pa(a, b);
     pa(a, b);
@@ -36,7 +36,7 @@ void    set_temp_arr(t_deque *a, int order, int *arr, int len)
     {
         while (i < len)
         {
-            arr[i++] = node;
+            arr[i++] = node -> val;
             node = node -> next;
         }
     }
@@ -44,40 +44,66 @@ void    set_temp_arr(t_deque *a, int order, int *arr, int len)
     {
         while (0 <= --len)
         {
-            arr[len] = node;
+            arr[len] = node -> val;
             node = node -> next;    
         }   
     }
 }
 
+// void    move_stack_three(t_deque *a, t_deque *b, int order)
+// {
+//     int arr[3];
+    
+//     set_temp_arr(a, order, arr, 3);
+//     if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
+//     {
+//         pa(a, b);
+//         sa(a);
+//     }
+//     else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2])
+//         sa(a); 
+//     else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
+//         ra(a); 
+//     else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
+//         ra(a); 
+//     else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
+//     {
+//         sa(a);
+//         rra(a);
+//     }     
+//     pa(a, b);
+//     pa(a, b);
+//     if (!(arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2]))
+//         pa(a, b);
+// }
+
 void    move_stack_three(t_deque *a, t_deque *b, int order)
 {
     int arr[3];
     
+    order =  order * -1;
     set_temp_arr(a, order, arr, 3);
-    if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
+    if (arr[0] < arr[1] && arr[0] < arr[2])
     {
-        pa(a);
-        sa(a);
-    }
-    else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2])
-        sa(a); 
-    else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
-        rra(a); 
-    else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
-        ra(a); 
-    else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
-    {
-        sa(a);
-        rra(a);
-    }     
-    pa(a, b);
-    pa(a, b);
-    if (!(arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2]))
         pa(a, b);
+        move_stack_two(a, b, order * -1);
+    }
+    if (arr[0] > arr[1] && arr[1] < arr[2])
+    {
+        sa(a);
+        move_stack_two(a, b, order * -1);
+    }    
+    if (arr[0] > arr[2] && arr[1] > arr[2])
+    {
+        pa(a, b);
+        sa(a);
+        pa(a, b);
+        sb(b);
+        pa(a, b);
+        if (arr[0] > arr[2])
+            sb(b);
+    }
 }
-
-
 
 void    move_stack_four(t_deque *a, t_deque *b, int order)
 {
@@ -140,6 +166,6 @@ void    divide(t_deque *a, t_deque *b, t_model *model)
     int i;
 
     i = model -> div_count;
-    while (--i > 0)
+    while (--i >= 0)
         a_to_b(a, b, (model -> div_arr)[i], (model -> div_arr_order)[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/07 15:46:06 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/07 17:16:29 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ t_list *pop(t_deque *deque)
     node = deque -> top;
     if (deque -> top -> next)
         deque -> top =  deque -> top -> next;
+    else
+    {
+        deque -> top = 0;
+        deque -> bottom = 0;
+    }
     (deque -> size)--;
     return (node);
 }
@@ -31,9 +36,14 @@ t_list *pop_bottom(t_deque *deque)
 
     if (!deque || !(deque -> top))
         print_error();
-    node = deque -> top;
-    if (deque -> top -> next)
-        deque -> top =  deque -> top -> next;
+    node = deque -> bottom;
+    if (deque -> bottom -> back)
+        deque -> bottom =  deque -> bottom -> back;
+    else
+    {
+        deque -> top = 0;
+        deque -> bottom = 0;
+    }
     (deque -> size)--;
     return (node);
 }
