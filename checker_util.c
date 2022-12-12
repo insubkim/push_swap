@@ -6,19 +6,19 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/12 13:48:00 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:44:34 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-        while (*s1 == *s2)
-        {
-                if (*s1++ == 0)
-                        return (0);
-                s2++;
-        }
-        return ((unsigned char)*s1 - (unsigned char)*s2);
+	while (*s1 == *s2)
+	{
+		if (*s1++ == 0)
+			return (0);
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

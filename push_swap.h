@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/12 13:54:17 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:32:53 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	rotate_both(t_deque *a, t_deque *b);
 void	swap_both(t_deque *a, t_deque *b);
 void	pop_chunk(t_deque *from, t_deque *to, int size);
 void	fix_model(t_model *model);
-int     ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 char	*get_next_line(int fd);
 int		ft_strlen(char *s);
 
