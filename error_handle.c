@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:49 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/02 09:40:35 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 10:57:18 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_error(void)
+void	print_error(void)
 {
-    write(1, "error\n", 6);
-    exit(999);
+	write(1, "Error\n", 6);
+	exit(1);
 }

@@ -3,121 +3,128 @@
 /*                                                        :::      ::::::::   */
 /*   conquer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inskim <inskim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/08 08:37:23 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 11:34:25 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    pop_chunk(t_deque *from, t_deque *to, int size)
+int	get_biggest(int arr[][2])
 {
-    while (size-- > 0)
-        push(to, pop(from));
+	int	big;
+
+	if (arr[0][1])
+		big = arr[0][0];
+	else if (arr[1][1])
+		big = arr[1][0];
+	else if (arr[2][1])
+		big = arr[2][0];
+	if (arr[0][1] && big < arr[0][0])
+		big = arr[0][0];
+	if (arr[1][1] && big < arr[1][0])
+		big = arr[1][0];
+	if (arr[2][1] && big < arr[2][0])
+		big = arr[2][0];
+	if (arr[0][1] && big == arr[0][0])
+		return (1);
+	if (arr[1][1] && big == arr[1][0])
+		return (2);
+	return (3);
 }
 
-void    match_model(t_deque *from, t_deque *to, t_model *match, int i)
+int	get_smallest(int arr[][2])
 {
-    int val;
-    int flag;
+	int	small;
 
-    while (match -> div_arr[i - 1] || match -> div_arr[i] || match -> div_arr[match -> div_count - i / 2 - 1])
-{
-    if (match -> div_arr[i - 1])
-    {
-        flag = 0;
-        val = peek_bottom(to);
-    }
-    if (match -> div_arr[i])
-    {
-        if (match -> div_arr_order[i] * -1 == 1)
-        {
-            if (val < peek(from))
-            {
-                flag = 1;
-                val = peek(from);
-            }
-        }
-        else
-        {
-            if (val > peek(from))
-            {
-                flag = 1;
-                val = peek(from);
-            }
-        }
-    }
-    if (match -> div_arr[match -> div_count - i / 2 - 1])
-    {
-        if (match -> div_arr_order[i] * -1 == 1)
-        {
-            if (val < peek_bottom(from))
-            {
-                flag = 2;
-                val = peek_bottom(from);
-            }
-        }
-        else
-        {
-            if (val > peek(from))
-            {
-                flag = 2;
-                val = peek_bottom(from);
-            }
-        }
-    }
-    if (flag == 0)
-    {
-        (match ->div_arr[i - 1])--;
-        rotate(to);
-    }
-    else if (flag == 1)
-    {
-        (match ->div_arr[i])--;
-        pop_push(from, to);
-    }
-    else if (flag == 2)
-    {
-        (match ->div_arr[match -> div_count - i / 2 - 1])--;
-        r_rotate(from);
-        pop_push(from, to);
-    }
-}
+	if (arr[0][1])
+		small = arr[0][0];
+	else if (arr[1][1])
+		small = arr[1][0];
+	else if (arr[2][1])
+		small = arr[2][0];
+	if (arr[0][1] && small > arr[0][0])
+		small = arr[0][0];
+	if (arr[1][1] && small > arr[1][0])
+		small = arr[1][0];
+	if (arr[2][1] && small > arr[2][0])
+		small = arr[2][0];
+	if (arr[0][0] && small == arr[0][0])
+		return (1);
+	if (arr[1][1] && small == arr[1][0])
+		return (2);
+	return (3);
 }
 
-void    conquer(t_deque *a, t_deque *b, t_model *model)
+int	get_next(t_deque *from, t_deque *to, t_model *model, int i)
 {
-    t_model *match;
-    int     i;
-    int     j;
-    int     flag;
+	int	arr[3][2];
 
-    match = model -> prev;
-    //pop [0] from -> to
-    //cmp [0] [1] [2] and pop
-    
+	arr[0][1] = 1;
+	arr[1][1] = 1;
+	arr[2][1] = 1;
+	if (model -> div_arr [i])
+		arr[0][0] = peek_bottom(to);
+	else
+		arr[0][1] = 0;
+	if (model -> div_arr [model -> div_count / 3 + i])
+		arr[1][0] = peek(from);
+	else
+		arr[1][1] = 0;
+	if (model -> div_arr [model -> div_count - 1 - i])
+		arr[2][0] = peek_bottom(from);
+	else
+		arr[2][1] = 0;
+	if (model -> div_arr_order[i] * -1 == 1)
+		return (get_biggest(arr));
+	else
+		return (get_smallest(arr));
+}
 
-    //until div_count
-    i = 0;
-    j = 0;
-    if (a -> size)
-        flag = 0;
-    else
-        flag = 1;
-    while (j < match -> div_count)
-    {
-        if (flag)
-        {
-            pop_chunk(b, a, (model -> div_arr)[i++]);
-            match_model(b, a, model, i++);
-        }
-        else
-        {
-            pop_chunk(a, b, (model -> div_arr)[i++]);
-            match_model(a, b, model, i++);
-        }
-        j = j + 3;
-    }
+void	match_model(t_deque *from, t_deque *to, t_model *model, int i)
+{
+	int	next;
+
+	while (model -> div_arr[i] || model -> div_arr[model -> div_count / 3 + i] \
+			|| model -> div_arr[model -> div_count - 1 - i])
+	{
+		next = get_next(from, to, model, i);
+		if (next == 1)
+		{
+			(model ->div_arr[i])--;
+			r_rotate(to);
+		}
+		else if (next == 2)
+		{
+			(model ->div_arr[model -> div_count / 3 + i])--;
+			pop_push(from, to);
+		}
+		else
+		{
+			(model ->div_arr[model -> div_count - 1 - i])--;
+			r_rotate(from);
+			pop_push(from, to);
+		}
+	}
+}
+
+void	conquer(t_deque *a, t_deque *b, t_model *model)
+{
+	int			i;
+	t_deque		*tmp;
+
+	if (!(a -> size))
+	{
+		tmp = a;
+		a = b;
+		b = tmp;
+	}
+	i = 0;
+	while (i < (model -> div_count) / 3)
+		pop_chunk(a, b, model -> div_arr[i++]);
+	i = 0;
+	while (i < (model -> div_count) / 3)
+		match_model(a, b, model, i++);
 }
