@@ -45,9 +45,10 @@ int	get_index_by_order(t_deque *a, int val, int order, int size)
 	return (i);
 }
 
-char	*set_temp_arr(t_deque *a, char *arr, int order, int size)
+char	*set_temp_arr(t_deque *a, int order, int size)
 {
 	t_list	*node;
+	char	*arr;
 	int		i;
 
 	arr = (char *)malloc(sizeof(char) * (size + 1));

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	move_stack_four2(t_deque *a, t_deque *b, int order, char *arr)
+void	move_stack_four2(t_deque *a, t_deque *b, char *arr)
 {
 	if (!ft_strncmp(arr, "bcad", 4))
 		execute(a, b, "pb rr pb rrr pb pb");
@@ -28,7 +28,7 @@ void	move_stack_four2(t_deque *a, t_deque *b, int order, char *arr)
 		execute(a, b, "sa pb rr pb pb rrr pb");
 }
 
-void	move_stack_four3(t_deque *a, t_deque *b, int order, char *arr)
+void	move_stack_four3(t_deque *a, t_deque *b, char *arr)
 {
 	if (!ft_strncmp(arr, "bcda", 4))
 		execute(a, b, "pb sa rr pb pb sb rrr sb pb");
@@ -48,7 +48,7 @@ void	move_stack_four(t_deque *a, t_deque *b, int order)
 {
 	char	*arr;
 
-	arr = set_temp_arr(a, arr, order, 4);
+	arr = set_temp_arr(a, order, 4);
 	if (arr[0] == 'a')
 	{
 		execute(a, b, "pb");
@@ -67,7 +67,7 @@ void	move_stack_four(t_deque *a, t_deque *b, int order)
 	else if (!ft_strncmp(arr, "dacb", 4))
 		execute(a, b, "pb pb ss pb sb pb sb");
 	else if (arr[2] == 'a')
-		move_stack_four2(a, b, order, arr);
+		move_stack_four2(a, b, arr);
 	else
-		move_stack_four3(a, b, order, arr);
+		move_stack_four3(a, b, arr);
 }

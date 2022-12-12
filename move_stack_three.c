@@ -16,7 +16,7 @@ void	move_stack_three(t_deque *a, t_deque *b, int order)
 {
 	char	*arr;
 
-	arr = set_temp_arr(a, arr, order, 3);
+	arr = set_temp_arr(a, order, 3);
 	if (!ft_strncmp(arr, "abc", 3))
 		execute(a, b, "pb pb pb");
 	else if (!ft_strncmp(arr, "acb", 3))

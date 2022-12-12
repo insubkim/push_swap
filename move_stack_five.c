@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	move_stack_five2(t_deque *a, t_deque *b, int order, char *arr)
+void	move_stack_five2(t_deque *a, t_deque *b, char *arr)
 {
 	if (arr[0] == 'b')
 		execute(a, b, "pb sa pb sb");
@@ -24,7 +24,7 @@ void	move_stack_five2(t_deque *a, t_deque *b, int order, char *arr)
 		execute(a, b, "pb rr pb sa pb rrr pa");
 }
 
-void	move_stack_five3(t_deque *a, t_deque *b, int order, char *arr)
+void	move_stack_five3(t_deque *a, t_deque *b, char *arr)
 {
 	if (arr[0] == 'b')
 		execute(a, b, "pb rr sa pb rrr");
@@ -36,7 +36,7 @@ void	move_stack_five3(t_deque *a, t_deque *b, int order, char *arr)
 		execute(a, b, "pb rr sa pb sa pb rrr pa");
 }
 
-void	move_stack_five4(t_deque *a, t_deque *b, int order, char *arr)
+void	move_stack_five4(t_deque *a, t_deque *b, char *arr)
 {
 	if (arr[0] == 'b')
 		execute(a, b, "pb rr ra sa pb rrr rra");
@@ -52,7 +52,7 @@ void	move_stack_five(t_deque *a, t_deque *b, int order)
 {
 	char	*arr;
 
-	arr = set_temp_arr(a, arr, order, 5);
+	arr = set_temp_arr(a, order, 5);
 	if (arr[0] == 'a')
 	{
 		execute(a, b, "pb");
@@ -66,11 +66,11 @@ void	move_stack_five(t_deque *a, t_deque *b, int order)
 	else
 	{
 		if (arr[2] == 'a')
-			move_stack_five2(a, b, order, arr);
+			move_stack_five2(a, b, arr);
 		else if (arr[3] == 'a')
-			move_stack_five3(a, b, order, arr);
+			move_stack_five3(a, b, arr);
 		else if (arr[4] == 'a')
-			move_stack_five4(a, b, order, arr);
+			move_stack_five4(a, b, arr);
 		move_stack_three(a, b, order);
 	}
 }

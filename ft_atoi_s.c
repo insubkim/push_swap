@@ -27,16 +27,6 @@ int	int_max_length(void)
 	return (len);
 }
 
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
-}
-
 int	ft_atoix(char *s)
 {
 	long long	num;

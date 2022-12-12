@@ -6,13 +6,13 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/12 11:46:22 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:25:57 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_deque *a, t_deque *b)
+void	sort_two(t_deque *a)
 {
 	if (a -> top -> val > a -> top -> next -> val)
 		swap(a);
@@ -88,7 +88,7 @@ void	sort_five(t_deque *a, t_deque *b)
 void	sort_under_six(t_deque *a, t_deque *b)
 {
 	if (a -> size == 2)
-		sort_two(a, b);
+		sort_two(a);
 	else if (a -> size == 3)
 		sort_three(a, b);
 	else if (a -> size == 4)

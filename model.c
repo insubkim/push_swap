@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/12 11:45:22 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:21:45 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	set_div_arr(t_model *node, t_model *new_node)
 	}
 }
 
-void	find_next_model(t_model *node, int size)
+void	find_next_model(t_model *node)
 {
 	t_model	*new_node;
 
@@ -81,7 +81,7 @@ t_model	*find_model(int size)
 	model -> prev = 0;
 	while (size > 5)
 	{
-		find_next_model(get_last_model(model), size);
+		find_next_model(get_last_model(model));
 		size = size / 3 + size % 3;
 	}
 	return (model);

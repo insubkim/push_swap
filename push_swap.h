@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/12 11:21:09 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 13:54:17 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n);
 void	move_stack_three(t_deque *a, t_deque *b, int order);
 void	move_stack_four(t_deque *a, t_deque *b, int order);
 void	move_stack_five(t_deque *a, t_deque *b, int order);
-char	*set_temp_arr(t_deque *a, char *arr, int order, int size);
+char	*set_temp_arr(t_deque *a, int order, int size);
 void	r_rotate_both(t_deque *a, t_deque *b);
 void	rotate_both(t_deque *a, t_deque *b);
 void	swap_both(t_deque *a, t_deque *b);
 void	pop_chunk(t_deque *from, t_deque *to, int size);
 void	fix_model(t_model *model);
+int     ft_strcmp(char *s1, char *s2);
+char	*get_next_line(int fd);
+int		ft_strlen(char *s);
 
 #endif
