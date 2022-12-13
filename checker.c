@@ -6,7 +6,7 @@
 /*   By: inskim <inskim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:02:44 by inskim            #+#    #+#             */
-/*   Updated: 2022/12/12 14:43:11 by inskim           ###   ########.fr       */
+/*   Updated: 2022/12/12 16:41:47 by inskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	has_command(char *s)
 	char	**arr;
 	int		i;
 
-	arr = ft_split("pa\n pb\n sa\n sb\n ss\n \
-			ra\n rb\n rr\n rra\n rrb\n rrr\n", " ");
+	arr = \
+ft_split("pa\n pb\n sa\n sb\n ss\n ra\n rb\n rr\n rra\n rrb\n rrr\n", " ");
 	i = 0;
 	while (arr[i])
 	{

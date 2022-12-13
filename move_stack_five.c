@@ -73,4 +73,5 @@ void	move_stack_five(t_deque *a, t_deque *b, int order)
 			move_stack_five4(a, b, arr);
 		move_stack_three(a, b, order);
 	}
+	free(arr);
 }

@@ -29,4 +29,5 @@ void	move_stack_three(t_deque *a, t_deque *b, int order)
 		execute(a, b, "sa pb sa pb pb");
 	else if (!ft_strncmp(arr, "cba", 3))
 		execute(a, b, "sa pb sa pb sb pb");
+	free(arr);
 }

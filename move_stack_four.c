@@ -70,4 +70,5 @@ void	move_stack_four(t_deque *a, t_deque *b, int order)
 		move_stack_four2(a, b, arr);
 	else
 		move_stack_four3(a, b, arr);
+	free(arr);
 }

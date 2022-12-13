@@ -6,14 +6,14 @@
 #    By: inskim <inskim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 08:02:44 by inskim            #+#    #+#              #
-#    Updated: 2022/12/12 15:11:02 by inskim           ###   ########.fr        #
+#    Updated: 2022/12/12 16:43:55 by inskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 SRC = check_dup.c command1.c command2.c conquer.c deque.c divide.c error_handle.c execute.c fix_model.c free.c ft_atoi_s.c ft_split.c main.c merge_sort.c model.c move_stack_five.c move_stack_four.c move_stack_three.c parse_arg.c peek_deque.c swap.c sort_under_six.c
 HEADER = push_swap.h
